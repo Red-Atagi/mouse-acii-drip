@@ -1,0 +1,31 @@
+<style>
+  .drip {
+    position: absolute;
+  }
+</style>
+
+<h1>Amazing Net Art</h1>
+<h2>by red</h2>
+
+
+<script>
+  let t;
+  function drip (e) {
+    const newDiv = document.createElement('div');
+    const node = document.createTextNode("This is new.");
+    newDiv.className = 'drip';
+    newDiv.style.left = `${e.pageX}px`
+    newDiv.style.top =  `${e.pageY}px`
+    
+     newDiv.appendChild(node);
+    
+    document.body.appendChild(newDiv);
+  }
+  
+  function resetTimer (e) {
+    clearTimeout(t);
+    t = setTimeout(drip, 5000, e); //calls drip every 10s
+  }
+  
+  window.addEventListener('mousemove', resetTimer, true);
+</script>
